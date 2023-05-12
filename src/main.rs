@@ -19,15 +19,13 @@ async fn main() -> Result<()> {
     let sql =
         std::fs::read_to_string("mock_data.sql").expect("Error reading from file mock_data.sql.");
 
-    let num_inserts = 200;
+    let num_inserts = 20;
 
     println!("Inserting...");
-    for i in 0..50 {
+    for i in 0..500 {
         let sql = sql.clone();
         println!("{} - {}", i * num_inserts, (i + 1) * num_inserts);
-        db.query(sql.clone())
-            .await
-            .expect("Error inserting into database.");
+        db.query(sql.clone()).await?;
     }
 
     Ok(())
