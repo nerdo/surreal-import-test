@@ -24,7 +24,7 @@ async fn main() -> Result<()> {
     println!("Inserting...");
     for i in 0..500 {
         let sql = sql.clone();
-        println!("{} - {}", i * num_inserts, (i + 1) * num_inserts);
+        println!("{} - {}", 1 + i * num_inserts, (i + 1) * num_inserts);
         db.query(sql.clone()).await?;
     }
 
